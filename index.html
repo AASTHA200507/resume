@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aastha Maurya S | Interactive 3D Resume</title>
+  <meta name="description" content="Stunning 3D interactive web resume of Aastha Maurya S, Botany Graduate and Portrait Drawing Artist. Built with HTML, CSS, Three.js, and vanilla JavaScript.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="resume.png"></script>
+  
+  <!-- Three.js for 3D Background -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background WebGL Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Ambient Light Orbs & Grid -->
+  <div class="bg-orb orb-gold-1"></div>
+  <div class="bg-orb orb-gold-2"></div>
+  <div class="bg-grid"></div>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor"></div>
+  <div class="custom-cursor-dot" id="custom-cursor-dot"></div>
+
+  <div class="app-container">
+    
+    <!-- Header / Nav -->
+    <header class="header">
+      <a href="#" class="logo">
+        <span>AASTHA</span>.DEV
+      </a>
+      <nav class="nav-tabs" id="nav-tabs">
+        <button class="tab-btn active" data-tab="about">About</button>
+        <button class="tab-btn" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="skills">Skills &amp; Intern</button>
+        <button class="tab-btn" data-tab="achievements">Achievements &amp; Art</button>
+        <button class="tab-btn" data-tab="contact">Contact</button>
+      </nav>
+      <button class="mode-toggle-btn" id="mode-toggle">
+        <i data-lucide="layers"></i>
+        <span>3D Hologram</span>
+      </button>
+    </header>
+
+    <!-- 3D Perspective Area -->
+    <main class="scene-3d">
+      <div class="card-wrapper-3d" id="card-wrapper">
+        <div class="resume-card" id="resume-card">
+          
+          <!-- LEFT SIDEBAR -->
+          <aside class="sidebar">
+            <div class="avatar-wrapper">
+              <div class="avatar-ring"></div>
+              <img src="assets/avatar.jpg" alt="Aastha Maurya S" class="avatar-img">
+            </div>
+            
+            <h1 class="profile-name">Aastha Maurya S</h1>
+            <p class="profile-title">College Student</p>
+            <p class="profile-tagline">Motivated. Dedicated. Eager to Learn.</p>
+            
+            <div class="sidebar-divider"></div>
+            
+            <div class="contact-info-list">
+              <!-- Phone -->
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="phone"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Phone</h4>
+                  <p>+91 6385609662</p>
+                </div>
+              </div>
+              
+              <!-- Email -->
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="mail"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <p>aasthaesthete00@gmail.com</p>
+                </div>
+              </div>
+              
+              <!-- Location -->
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i data-lucide="map-pin"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Address</h4>
+                  <p>501 Masaniamman nagar, Anna nagar street, Edyarpalayam, Vadavali road, Coimbatore-641025</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- RIGHT CONTENT AREA -->
+          <div class="content-area">
+            
+            <!-- PANEL: ABOUT ME -->
+            <section class="content-panel active" id="panel-about">
+              <div class="panel-header">
+                <span class="panel-subtitle">Introduction</span>
+                <h2 class="panel-title">About Me</h2>
+              </div>
+              
+              <p class="about-desc">
+                An independent and self-motivated graduate seeking a challenging position in a reputable organization to expand and utilize my learning, skills, and knowledge. Possess excellent communication skills and have an eye for detail. Flexible to work in any environment as required.
+              </p>
+              
+              <div class="about-features">
+                <div class="feature-box">
+                  <i data-lucide="flower2"></i>
+                  <div>
+                    <h4>Botanical Sciences</h4>
+                    <p>Academic specialization in plant biotechnology, nanotechnology, and chromatography.</p>
+                  </div>
+                </div>
+                
+                <div class="feature-box">
+                  <i data-lucide="palette"></i>
+                  <div>
+                    <h4>Portrait Artistry</h4>
+                    <p>Experienced portrait drawing artist with awards in fine art drawing contests.</p>
+                  </div>
+                </div>
+              </div>
+              
+              <blockquote class="about-quote">
+                "I believe in continuous learning and believe that hard work and consistency lead to success."
+              </blockquote>
+            </section>
+
+            <!-- PANEL: EDUCATION -->
+            <section class="content-panel" id="panel-education">
+              <div class="panel-header">
+                <span class="panel-subtitle">Academics</span>
+                <h2 class="panel-title">Education</h2>
+              </div>
+              
+              <div class="timeline">
+                <!-- Botany Degree -->
+                <div class="timeline-card">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-header">
+                    <span class="timeline-badge">Graduation</span>
+                    <div class="timeline-percentage">92%<span>CGPA</span></div>
+                  </div>
+                  <h3>B Sc. Botany</h3>
+                  <p class="timeline-institution">Avinashilingam Institute for Home Science and Higher Education for Women</p>
+                </div>
+
+                <!-- HSC -->
+                <div class="timeline-card">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-header">
+                    <span class="timeline-badge">Hsc (2022)</span>
+                    <div class="timeline-percentage">88%<span>Score</span></div>
+                  </div>
+                  <h3>Higher Secondary Education</h3>
+                  <p class="timeline-institution">Avinashilingam hr sec school for girls</p>
+                </div>
+
+                <!-- SSLC -->
+                <div class="timeline-card">
+                  <div class="timeline-dot"></div>
+                  <div class="timeline-header">
+                    <span class="timeline-badge">SSLC (2020)</span>
+                    <div class="timeline-percentage">93%<span>Score</span></div>
+                  </div>
+                  <h3>Matriculation</h3>
+                  <p class="timeline-institution">SV Nagar Vidyalaya Matric school</p>
+                </div>
+              </div>
+            </section>
+
+            <!-- PANEL: SKILLS & INTERN -->
+            <section class="content-panel" id="panel-skills">
+              <div class="panel-header">
+                <span class="panel-subtitle">Capabilities</span>
+                <h2 class="panel-title">Skills &amp; Internship</h2>
+              </div>
+              
+              <div class="skills-container">
+                <div class="skills-subgrid">
+                  <!-- Skill 1 -->
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <h3>Teamwork</h3>
+                      <p>Collaboration &amp; Group Dynamics</p>
+                    </div>
+                    <div class="skill-dots">
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                    </div>
+                  </div>
+
+                  <!-- Skill 2 -->
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <h3>Time Management</h3>
+                      <p>Task Prioritization &amp; Speed</p>
+                    </div>
+                    <div class="skill-dots">
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                    </div>
+                  </div>
+
+                  <!-- Skill 3 -->
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <h3>Leadership</h3>
+                      <p>Team Guidance &amp; Ownership</p>
+                    </div>
+                    <div class="skill-dots">
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot"></span>
+                    </div>
+                  </div>
+
+                  <!-- Skill 4 -->
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <h3>Verbal Communication</h3>
+                      <p>Presentation &amp; Engagement</p>
+                    </div>
+                    <div class="skill-dots">
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot"></span>
+                    </div>
+                  </div>
+
+                  <!-- Skill 5 -->
+                  <div class="skill-item">
+                    <div class="skill-info">
+                      <h3>Written Communication</h3>
+                      <p>Reports, Essays &amp; Records</p>
+                    </div>
+                    <div class="skill-dots">
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot fill"></span>
+                      <span class="skill-dot"></span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Internship Details -->
+                <div class="timeline-card" style="margin-top: 1rem;">
+                  <div class="timeline-header">
+                    <span class="timeline-badge" style="background: rgba(212, 175, 55, 0.15);">17 Days Internship</span>
+                    <span class="timeline-percentage" style="font-size: 0.95rem; font-weight: 500;"><i data-lucide="calendar" style="width: 14px; height: 14px; vertical-align: middle; margin-right: 4px;"></i>VJ BIOTECH</span>
+                  </div>
+                  <h3 style="margin-top: 0.5rem; font-size: 1.15rem; color: var(--gold-secondary);">VJ BIOTECH - Botanical Intern</h3>
+                  <p class="timeline-institution" style="margin-bottom: 0.8rem;">Hands-on industrial training in modern botany techniques:</p>
+                  <div class="lang-chips-grid">
+                    <div class="lang-chip" style="font-size: 0.8rem; padding: 0.3rem 1rem;"><i data-lucide="dot" style="color: var(--gold-primary); margin-left:-5px;"></i>Nanotechnology</div>
+                    <div class="lang-chip" style="font-size: 0.8rem; padding: 0.3rem 1rem;"><i data-lucide="dot" style="color: var(--gold-primary); margin-left:-5px;"></i>Chromatography</div>
+                    <div class="lang-chip" style="font-size: 0.8rem; padding: 0.3rem 1rem;"><i data-lucide="dot" style="color: var(--gold-primary); margin-left:-5px;"></i>Plant Tissue Culture</div>
+                  </div>
+                </div>
+
+                <!-- Languages Grid -->
+                <div class="languages-wrap">
+                  <h3>Languages Spoken</h3>
+                  <div class="lang-chips-grid">
+                    <div class="lang-chip"><i data-lucide="languages"></i>English</div>
+                    <div class="lang-chip"><i data-lucide="languages"></i>Tamil</div>
+                    <div class="lang-chip"><i data-lucide="languages"></i>Hindi</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- PANEL: ACHIEVEMENTS & ART -->
+            <section class="content-panel" id="panel-achievements">
+              <div class="panel-header">
+                <span class="panel-subtitle">Milestones</span>
+                <h2 class="panel-title">Achievements &amp; Art</h2>
+              </div>
+              
+              <div class="achievements-grid">
+                <!-- Achievement 1 -->
+                <div class="achievement-card">
+                  <div class="achievement-badge">
+                    <i data-lucide="award"></i>
+                  </div>
+                  <div class="achievement-details">
+                    <h4>2nd Place - Inter-Collegiate Fine Art</h4>
+                    <p>Awarded second place in drawing competition representing botanical sketching talent.</p>
+                  </div>
+                </div>
+
+                <!-- Achievement 2 -->
+                <div class="achievement-card">
+                  <div class="achievement-badge">
+                    <i data-lucide="globe"></i>
+                  </div>
+                  <div class="achievement-details">
+                    <h4>72nd State Rank - IOEL Level 1</h4>
+                    <p>State rank in the International Olympiad of English Language (Level 1).</p>
+                  </div>
+                </div>
+
+                <!-- Achievement 3 -->
+                <div class="achievement-card">
+                  <div class="achievement-badge">
+                    <i data-lucide="trophy"></i>
+                  </div>
+                  <div class="achievement-details">
+                    <h4>39th State Rank - IOEL Level 2</h4>
+                    <p>Secured high honors in the International Olympiad of English Language (Level 2).</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Art Gallery Title -->
+              <h3 class="gallery-section-title">Art Gallery (Portrait Sketches)</h3>
+              <div class="gallery-grid">
+                <div class="gallery-item">
+                  <img src="assets/drawing1.jpg" alt="Pencil sketch portrait" class="gallery-img">
+                  <div class="gallery-overlay">
+                    <h4>Portrait Sketching</h4>
+                    <p>Detailed graphite &amp; charcoal drawing by Aastha.</p>
+                  </div>
+                </div>
+                <div class="gallery-item">
+                  <img src="assets/drawing2.jpg" alt="Expressive charcoal portrait" class="gallery-img">
+                  <div class="gallery-overlay">
+                    <h4>Charcoal Portrait</h4>
+                    <p>Expressive realism drawing capturing facial elements.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Extra-curriculars (Extracurriculars) -->
+              <div class="languages-wrap" style="margin-top: 2rem;">
+                <h3 style="font-size: 1.1rem; color: var(--gold-primary); margin-bottom: 0.8rem;">Additional Certifications</h3>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.9rem; color: var(--text-secondary);">
+                  <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle-2" style="color: var(--gold-primary); width: 16px; height: 16px;"></i>Certified in Artificial Intelligence for Business</li>
+                  <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle-2" style="color: var(--gold-primary); width: 16px; height: 16px;"></i>Certified in Soft Skills</li>
+                  <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle-2" style="color: var(--gold-primary); width: 16px; height: 16px;"></i>Certified in Foundation Yoga</li>
+                  <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle-2" style="color: var(--gold-primary); width: 16px; height: 16px;"></i>NCC - B Certificate Holder</li>
+                  <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check-circle-2" style="color: var(--gold-primary); width: 16px; height: 16px;"></i>Portrait Drawing Artist</li>
+                </ul>
+              </div>
+            </section>
+
+            <!-- PANEL: CONTACT -->
+            <section class="content-panel" id="panel-contact">
+              <div class="panel-header">
+                <span class="panel-subtitle">Reach Out</span>
+                <h2 class="panel-title">Contact</h2>
+              </div>
+              
+              <div class="contact-grid">
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                  <div class="form-group">
+                    <label for="contact-name">Your Name</label>
+                    <input type="text" id="contact-name" class="form-control" placeholder="Jane Doe" required>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="contact-email">Email Address</label>
+                    <input type="email" id="contact-email" class="form-control" placeholder="jane@example.com" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-msg">Message</label>
+                    <textarea id="contact-msg" class="form-control" rows="6" placeholder="Hi Aastha, I would love to collaborate..." required></textarea>
+                  </div>
+
+                  <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <i data-lucide="send"></i>
+                  </button>
+                </form>
+              </div>
+            </section>
+
+          </div>
+          
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer-text">&copy; 2026 Aastha Maurya S. Interactive 3D Resume. Built with <span>passion</span>, HTML, CSS, Three.js &amp; JS.</p>
+    </footer>
+
+  </div>
+
+  <!-- Script Logic -->
+  <script src="script.js"></script>
+  <script>
+    // Initialize Lucide vector icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
